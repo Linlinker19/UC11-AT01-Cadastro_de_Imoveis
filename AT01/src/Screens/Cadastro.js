@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import Database from "../Database/Database";
 import Imovel from "../Models/Imovel";
+import ItemImovel from "../Components/ItemImovel";
 
 export default class Cadastro extends Component {
 
@@ -47,15 +48,17 @@ export default class Cadastro extends Component {
                         }}> Cadastrar </Text>
                     </TouchableOpacity>
                 </View>
-
-                <View>
-                    <Text> O imóvel será cadastrado com os seguintes dados:</Text>
-                    <Text>Tipo: {this.state.tipo}</Text>
-                    <Text>Endereço: {this.state.endereco}</Text>
-                    <Text>Finalidade: {this.state.finalidade}</Text>
-                    <Text>Valor: {this.state.valor}</Text>
-                </View>
-
+                
+                <Text> O imóvel será cadastrado com os seguintes dados:</Text>
+                <ItemImovel 
+                    tipo= {this.state.tipo}
+                    endereco= {this.state.endereco}
+                    finalidade= {this.state.finalidade}
+                    valor= {this.state.valor}
+                    imagem= {this.state.imagem}
+                />
+                
+                
             </View>
         )
     }

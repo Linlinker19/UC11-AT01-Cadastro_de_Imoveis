@@ -105,7 +105,7 @@ export default class Database {
         });
     }
 
-    deletar(id) {  
+    Deletar(id) {  
         return new Promise((resolve) => {    
             this.Conectar().then((db) => {      
                 db.transaction((tx) => {    
