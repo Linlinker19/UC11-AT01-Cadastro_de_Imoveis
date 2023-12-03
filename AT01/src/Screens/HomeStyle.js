@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
         flex: 2, 
     },
     buttons: {
-        
         alignSelf: 'center',
         margin: 15,  
         width: '80%', 

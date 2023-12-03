@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import Database from '../Database/Database';
 import ItemImovel from '../Components/ItemImovel';
+import styles from './ListagemStyle';
 
 export default class Listagem extends Component {
     constructor(props) {
@@ -28,10 +29,10 @@ export default class Listagem extends Component {
     render() {
 
         return (
-            <View>
-                <Text> Imóveis Cadastrados: </Text>
+            <ScrollView>
+                <Text style={styles.headerText}> Imóveis Cadastrados </Text>
                 <Text></Text>
-                <ScrollView>
+                <View>
                     {
                         this.state.listaImoveis.map(
                             item => (
@@ -50,8 +51,8 @@ export default class Listagem extends Component {
                             )
                         )
                     }
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 

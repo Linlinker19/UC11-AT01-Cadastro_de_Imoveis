@@ -23,13 +23,14 @@ export default class Cadastro extends Component {
         const banco = new Database();
         const imovel = new Imovel(null, tipo, endereco, finalidade, valor, imagem);
         banco.Inserir(imovel);
+        alert('Cadastro realizado.')
     }
 
     takePicture = async () => {
         if (this.camera) {
             const options = { quality: 0.7, base64: true, width: 640 };
             const data = await this.camera.takePictureAsync(options);
-            this.setState({imagem: data.uri});
+            this.setState({ imagem: data.uri });
             console.log(data.uri);
 
         }
@@ -41,11 +42,11 @@ export default class Cadastro extends Component {
         return (
             <ScrollView style={styles.scrollview}>
                 <View style={styles.containerCadastro}>
-                    <Text> Cadastro de Imóveis</Text>
-                    <TextInput onChangeText={(valor) => { this.setState({ tipo: valor }) }} placeholder='Digite o tipo do imóvel...'></TextInput>
-                    <TextInput onChangeText={(valor) => { this.setState({ endereco: valor }) }} placeholder='Digite o Endereço...'></TextInput>
-                    <TextInput onChangeText={(valor) => { this.setState({ finalidade: valor }) }} placeholder='Digite a finalidade...'></TextInput>
-                    <TextInput onChangeText={(valor) => { this.setState({ valor: valor }) }} placeholder='Digite o valor...'></TextInput>
+                    <Text style={styles.headerText}> Cadastro de Imóveis</Text>
+                    <TextInput style={styles.textInput} onChangeText={(valor) => { this.setState({ tipo: valor }) }} placeholder='Digite o tipo do imóvel...'></TextInput>
+                    <TextInput style={styles.textInput} onChangeText={(valor) => { this.setState({ endereco: valor }) }} placeholder='Digite o Endereço...'></TextInput>
+                    <TextInput style={styles.textInput} onChangeText={(valor) => { this.setState({ finalidade: valor }) }} placeholder='Digite a finalidade...'></TextInput>
+                    <TextInput style={styles.textInput} onChangeText={(valor) => { this.setState({ valor: valor }) }} placeholder='Digite o valor...'></TextInput>
                 </View>
 
                 <View style={styles.container}>
@@ -79,22 +80,6 @@ export default class Cadastro extends Component {
                     </View>
                 </View>
 
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={
-                        () => this.CadastrarBanco(this.state.tipo, this.state.endereco, this.state.finalidade, this.state.valor, this.state.imagem)
-                    }>
-                        <Text style={{
-                            backgroundColor: '#2ea630',
-                            width: 150,
-                            textAlign: 'center',
-                            padding: 10,
-                            margin: 5,
-                            color: 'white',
-                            borderRadius: 25,
-                        }}> Cadastrar </Text>
-                    </TouchableOpacity>
-                </View>
-
                 <View>
                     <Text> O imóvel será cadastrado com os seguintes dados:</Text>
                     <ItemImovel
@@ -104,6 +89,15 @@ export default class Cadastro extends Component {
                         valor={this.state.valor}
                         imagem={this.state.imagem}
                     />
+                </View>
+                
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                    <TouchableOpacity 
+                        onPress={
+                        () => this.CadastrarBanco(this.state.tipo, this.state.endereco, this.state.finalidade, this.state.valor, this.state.imagem)} 
+                        style={styles.cadastrarButton}>
+                        <Text style={styles.textoCadastrar}> Cadastrar </Text>
+                    </TouchableOpacity>
                 </View>
 
             </ScrollView>
