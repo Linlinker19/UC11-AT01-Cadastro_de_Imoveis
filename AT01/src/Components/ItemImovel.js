@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { StyleSheet, Dimensions } from "react-native";
 
+
+var placeholderImage = require('../Images/placeholder.jpeg');
+
 export default class ItemImovel extends Component {
 
     styles = StyleSheet.create({
@@ -55,6 +58,8 @@ export default class ItemImovel extends Component {
         },
     })
 
+    
+
     verificarExcluir() {
         if(this.props.excluir) {
             return (
@@ -72,18 +77,20 @@ export default class ItemImovel extends Component {
         }
     }
 
+    
+
     render() {
         return (
             <View style={this.styles.ItemContainer}>
                 <View style={this.styles.ImageContainer}>
                     <Image
                         style={this.styles.thumbnail}
-                        source={{ uri: 'https://th.bing.com/th/id/OIP.HGbujKai-mMxWt5SgAERwwHaFj?rs=1&pid=ImgDetMain' }}>
-                    </Image>
+                        source={this.props.imagem == 'nenhuma' ? placeholderImage : {uri: this.props.imagem}}
+                        />
                 </View>
 
                 <View style={this.styles.textContainer}>
-                    <Text>Id: {this.props.id} </Text>
+                    {/* <Text>Id: {this.props.id} </Text> */}
                     <Text>Tipo: {this.props.tipo} </Text>
                     <Text>Endereço: {this.props.endereco} </Text>
                     <Text>Finalidade: {this.props.finalidade} </Text>

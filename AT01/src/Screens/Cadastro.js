@@ -15,7 +15,7 @@ export default class Cadastro extends Component {
             endereco: 'Em Branco',
             finalidade: 'Em Branco',
             valor: 0,
-            imagem: 'Nenhuma',
+            imagem: 'nenhuma',
         }
     }
 
@@ -27,9 +27,11 @@ export default class Cadastro extends Component {
 
     takePicture = async () => {
         if (this.camera) {
-            const options = { quality: 0.5, base64: true };
+            const options = { quality: 0.7, base64: true, width: 640 };
             const data = await this.camera.takePictureAsync(options);
+            this.setState({imagem: data.uri});
             console.log(data.uri);
+
         }
     };
 
